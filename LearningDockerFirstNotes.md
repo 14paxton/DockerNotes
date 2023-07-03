@@ -115,7 +115,7 @@ SHELL:
 ## CREATE DOCKER HUB IMAGE
 
 ### Docker Push:
-    ```bash
+```bash
     docker image push <USERNAME><IMAGE_NAME>:<TAG>
     ```
 ### Creating an image for Docker Hub:
