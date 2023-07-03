@@ -117,32 +117,33 @@ SHELL:
 ### Docker Push:
 ```bash
     docker image push <USERNAME><IMAGE_NAME>:<TAG>
-    ```
+```
 ### Creating an image for Docker Hub:
 
-    ```bash
+```bash
         docker image tag <IMAGE_NAME>:<TAG>
-    ```
+```
 
 ###  Set up your environment:
 
-    ```bash
+```bash
         cd docker_images
 
         mkdir dockerhub
 
         cd dockerhub
-    ```
+```
     
 ###  Create the Dockerfile:
 
-    ```bash
+```bash
     
         vim Dockerfile
-    ```
+```
     
         > Dockerfile contents:
-            ```
+        
+        ```
                 \# Create an image for the weather-app using multi-stage build
 
                 FROM node AS build
@@ -183,7 +184,7 @@ SHELL:
                 
                 cd ../
           
-            ```
+        ```
   
 ###  Build the image:
 
