@@ -205,13 +205,13 @@ SHELL:
 ```bash
         docker login
         
-        docker image push <USERNAME>weather-app:<HASH>
-        
-        Tag the latest image:
-        
-        docker image tag <USERNAME>weather-app:<HASH>
-        <USERNAME>/weather-app:latest
-    
+        docker images
+        docker tag stacksimplify/mynginx_image1:v1 stacksimplify/mynginx_image1:v1-release
+        docker push stacksimplify/mynginx_image1:v1-release
+
+        # Replace your docker hub account Id
+        docker tag <your-docker-hub-id>/mynginx_image1:v1 <your-docker-hub-id>/mynginx_image1:v1-release
+        docker push <your-docker-hub-id>/mynginx_image1:v1-release
 ```
 
 ###  Push the latest image to Docker Hub:
