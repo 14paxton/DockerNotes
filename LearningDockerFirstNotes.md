@@ -87,7 +87,7 @@ VOLUME:
         holding externally mounted volumes from native host or other containers`
 
 USER: 
-    Sets the user name (or UID) and optionally the user group (or GID)
+    `Sets the user name (or UID) and optionally the user group (or GID)
         to use when running the image and for any RUN, CMD,
         and ENTRYPOINT instructions that follow it in the Dockerfile`
 
@@ -112,99 +112,117 @@ SHELL:
     `Allows the default shell used for the shell form of commands to
         be overridden`
 
-**[CREATE DOCKER HUB IMAGE]{.underline}**
+## CREATE DOCKER HUB IMAGE
 
-Docker Push:
+### Docker Push:
+    ```bash
+        docker image push <USERNAME><IMAGE_NAME>:<TAG>
+    ```
+### Creating an image for Docker Hub:
 
-docker image push \<USERNAME\>/\<IMAGE_NAME\>:\<TAG\>
+    ```bash
+        docker image tag <IMAGE_NAME>:<TAG>
+    ```
 
-Creating an image for Docker Hub:
+###  Set up your environment:
 
-docker image tag \<IMAGE_NAME\>:\<TAG\>
-\<linuxacademy\>/\<IMAGE_NAME\>:\<TAG\>
+    ```bash
+        cd docker_images
 
-Set up your environment:
+        mkdir dockerhub
 
-cd docker_images
+        cd dockerhub
+    ```
+    
+###  Create the Dockerfile:
 
-mkdir dockerhub
+    ```bash
+    
+        vim Dockerfile
+    ```
+    
+        > Dockerfile contents:
+            ```
+                \# Create an image for the weather-app using multi-stage build
 
-cd dockerhub
+                FROM node AS build
 
-Create the Dockerfile:
+                RUN mkdir -p /var/node/
 
-vi Dockerfile
+                ADD src/ /var/node/
 
-Dockerfile contents:
+                WORKDIR /var/node
+                
+                RUN npm install
+                
+                FROM node:alpine
+                
+                ARG VERSION=V1.1
+                
+                LABEL org.label-schema.version=\$VERSION
+                
+                ENV NODE_ENV=\"production\"
 
-\# Create an image for the weather-app using multi-stage build
+                COPY \--from=build /var/node /var/node
+                
+                WORKDIR /var/node
+                
+                EXPOSE 3000
+                
+                ENTRYPOINT \[\"./bin/www\"\]
+                
+                Git the weather-app code:
+                
+                git clone https://github.com/linuxacademy/content-weather-app.git src
+                
+                Use the Git commit hash as the image tag:
+                
+                cd src
+                
+                git log -1 \--pretty=%H
+                
+                cd ../
+          
+            ```
+  
+###  Build the image:
 
-FROM node AS build
+    ```bash
+    
+        docker image build -t <USERNAME>weather-app:<HASH> --build-arg
+        VERSION=1.5 .
+        
+        Tag the image before pushing it to Docker Hub:
+        
+        docker image tag linuxacademy/weather-app:<HASH>
+        <USERNAME>weather-app:<HASH>
+        
+    ```
 
-RUN mkdir -p /var/node/
+###  Push the image to Docker Hub:
 
-ADD src/ /var/node/
+    ```bash
+        docker login
+        
+        docker image push <USERNAME>weather-app:<HASH>
+        
+        Tag the latest image:
+        
+        docker image tag <USERNAME>weather-app:<HASH>
+        <USERNAME>/weather-app:latest
+    
+    ```
 
-WORKDIR /var/node
+###  Push the latest image to Docker Hub:
 
-RUN npm install
+    ```bash
+        
+        docker login <USERNAME>
+        
+        docker image push <USERNAME>weather-app:latest
+    ```
 
-FROM node:alpine
-
-ARG VERSION=V1.1
-
-LABEL org.label-schema.version=\$VERSION
-
-ENV NODE_ENV=\"production\"
-
-COPY \--from=build /var/node /var/node
-
-WORKDIR /var/node
-
-EXPOSE 3000
-
-ENTRYPOINT \[\"./bin/www\"\]
-
-Git the weather-app code:
-
-git clone https://github.com/linuxacademy/content-weather-app.git src
-
-Use the Git commit hash as the image tag:
-
-cd src
-
-git log -1 \--pretty=%H
-
-cd ../
-
-Build the image:
-
-docker image build -t \<USERNAME\>/weather-app:\<HASH\> \--build-arg
-VERSION=1.5 .
-
-Tag the image before pushing it to Docker Hub:
-
-docker image tag linuxacademy/weather-app:\<HASH\>
-\<USERNAME\>/weather-app:\<HASH\>
-
-Push the image to Docker Hub:
-
-docker login
-
-docker image push \<USERNAME\>/weather-app:\<HASH\>
-
-Tag the latest image:
-
-docker image tag \<USERNAME\>/weather-app:\<HASH\>
-\<USERNAME\>/weather-app:latest
-
-Push the latest image to Docker Hub:
-
-docker login \<USERNAME\>
-
-docker image push \<USERNAME\>/weather-app:latest
-
-**[DOCKER COMPOSE]{.underline}**
+# Docker Compose
 
 -   INSTALL
 
