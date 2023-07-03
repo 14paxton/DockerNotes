@@ -143,7 +143,7 @@ SHELL:
     
         > Dockerfile contents:
         
-        ```
+```
                 \# Create an image for the weather-app using multi-stage build
 
                 FROM node AS build
@@ -184,11 +184,11 @@ SHELL:
                 
                 cd ../
           
-        ```
+```
   
 ###  Build the image:
 
-    ```bash
+```bash
     
         docker image build -t <USERNAME>weather-app:<HASH> --build-arg
         VERSION=1.5 .
@@ -198,11 +198,11 @@ SHELL:
         docker image tag linuxacademy/weather-app:<HASH>
         <USERNAME>weather-app:<HASH>
         
-    ```
+```
 
 ###  Push the image to Docker Hub:
 
-    ```bash
+```bash
         docker login
         
         docker image push <USERNAME>weather-app:<HASH>
@@ -212,16 +212,16 @@ SHELL:
         docker image tag <USERNAME>weather-app:<HASH>
         <USERNAME>/weather-app:latest
     
-    ```
+```
 
 ###  Push the latest image to Docker Hub:
 
-    ```bash
+```bash
         
         docker login <USERNAME>
         
         docker image push <USERNAME>weather-app:latest
-    ```
+```
 
 # Docker Compose
 
