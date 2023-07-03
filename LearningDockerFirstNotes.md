@@ -48,53 +48,69 @@ Where ubuntu for windows resides -
 -   execute commands = docker container exec -it \[name/id\] ls
     /usr/share/nginx/html
 
-**[Dockerfile]{.underline}**
+# Dockerfile
 
-FROM: Initializes a new build stage and sets the Base Image
+FROM: 
+    `Initializes a new build stage and sets the Base Image`
 
-RUN: Will execute any commands in a new layer
+RUN: 
+    `Will execute any commands in a new layer`
 
-CMD: Provides a default for an executing container. There can only be
-one CMD instruction in a Dockerfile
+CMD: 
+    `Provides a default for an executing container. There can only be
+        one CMD instruction in a Dockerfile`
 
-LABEL: Adds metadata to an image
+LABEL: 
+    `Adds metadata to an image`
 
-EXPOSE: Informs Docker that the container listens on the specified
-network ports at runtime
+EXPOSE: 
+    `Informs Docker that the container listens on the specified
+        network ports at runtime`
 
-ENV: Sets the environment variable \<key\> to the value \<value\>
+ENV: 
+    `Sets the environment variable \<key\> to the value \<value\>`
 
-ADD: Copies new files, directories or remote file URLs from \<src\> and
-adds them to the filesystem of the image at the path \<dest\>.
+ADD: 
+    `Copies new files, directories or remote file URLs from \<src\> and
+        adds them to the filesystem of the image at the path \<dest\>.`
 
-COPY: Copies new files or directories from \<src\> and adds them to the
-filesystem of the container at the path \<dest\>.
+COPY: 
+    `Copies new files or directories from \<src\> and adds them to the
+        filesystem of the container at the path \<dest\>.`
 
-ENTRYPOINT: Allows for configuring a container that will run as an
-executable
+ENTRYPOINT: 
+    `Allows for configuring a container that will run as an
+        executable`
 
-VOLUME: Creates a mount point with the specified name and marks it as
-holding externally mounted volumes from native host or other containers
+VOLUME: 
+    `Creates a mount point with the specified name and marks it as
+        holding externally mounted volumes from native host or other containers`
 
-USER: Sets the user name (or UID) and optionally the user group (or GID)
-to use when running the image and for any RUN, CMD,
-and ENTRYPOINT instructions that follow it in the Dockerfile
+USER: 
+    Sets the user name (or UID) and optionally the user group (or GID)
+        to use when running the image and for any RUN, CMD,
+        and ENTRYPOINT instructions that follow it in the Dockerfile`
 
-WORKDIR: Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY,
-and ADD instructions that follow it in the Dockerfile
+WORKDIR: 
+    `Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY,
+        and ADD instructions that follow it in the Dockerfile`
 
-ARG: Defines a variable that users can pass at build-time to the builder
-with the docker build command, using the \--build-arg
-\<varname\>=\<value\> flag
+ARG: 
+    `Defines a variable that users can pass at build-time to the builder
+        with the docker build command, using the \--build-arg
+        \<varname\>=\<value\> flag`
 
-ONBUILD: Adds a trigger instruction to the image that will be executed
-at a later time, when the image is used as the base for another build
+ONBUILD: 
+    `Adds a trigger instruction to the image that will be executed
+        at a later time, when the image is used as the base for another build`
 
-HEALTHCHECK: Tells Docker how to test a container to check that it is
-still working
+HEALTHCHECK: 
+    `Tells Docker how to test a container to check that it is
+        still working`
 
-SHELL: Allows the default shell used for the shell form of commands to
-be overridden
+SHELL: 
+    `Allows the default shell used for the shell form of commands to
+        be overridden`
 
 **[CREATE DOCKER HUB IMAGE]{.underline}**
 
