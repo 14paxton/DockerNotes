@@ -1,4 +1,34 @@
-## Restart Docker
+---
+title: Quick-TidBits
+permalink: DockerNotes/Quick-TidBits
+category:  DockerNotes
+parent:   DockerNotes
+layout: default
+has_children: false
+share: true
+shortRepo:
+  - dockernotes
+  - default          
+---
+
+
+<br/>          
+
+<details markdown="block">                
+<summary>                
+Table of contents                
+</summary>                
+{: .text-delta }                
+1. TOC                
+{:toc}                
+</details>                
+
+<br/>                
+
+***                
+
+<br/>
+# Restart Docker
 1) sudo su
    systemctl start docker
    systemctl enable docker
@@ -10,10 +40,10 @@
    sudo systemctl start docker   
 
 
-## To keep your Docker images small, don't install unnecessary editors. You can edit the files over SSH from the Docker host to the container:
+# To keep your Docker images small, don't install unnecessary editors. You can edit the files over SSH from the Docker host to the container:
        vim scp://remoteuser@containerip//path/to/document
        
-## Use host ip
+# Use host ip
 <a href="https://gist.github.com/14paxton/fc9331557d823620d73d15c453b83bd8" > Use Host IP yml </a>
     
     host.docker.internal

@@ -1,39 +1,39 @@
 Where ubuntu for windows resides -
 **[C:\\Users\\bpaxton\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs]{.underline}**
 
--   **Docker ps -a**
+- **Docker ps -a**
 
-    -   show docker containers
+    - show docker containers
 
--   **docker rm \$(docker ps -a -q -f status=exited)**
+- **docker rm \$(docker ps -a -q -f status=exited)**
 
-    -   remove all exited containers
+    - remove all exited containers
 
-        -   docker container prune
+        - docker container prune
 
--   docker pull = copies images to docker host
+- docker pull = copies images to docker host
 
--   docker rmi = removes images from docker host
+- docker rmi = removes images from docker host
 
--   docker ps = lists running containers
+- docker ps = lists running containers
 
--   docker stop = stops running containers
+- docker stop = stops running containers
 
--   docker rm = removes containers
+- docker rm = removes containers
 
--   **get docker ip =** docker-machine ip default
+- **get docker ip =** docker-machine ip default
 
--   **docker ip for container =**
+- **docker ip for container =**
 
 > **docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}"
 > \[containter\]**
 
--   **get ports for container= docker port \[container\]**
+- **get ports for container= docker port \[container\]**
 
--   **build image =** docker image build -t \[path to app with
-    Dockerfile\].
+- **build image =** docker image build -t \[path to app with
+  Dockerfile\].
 
--   **start container =**
+- **start container =**
 
 > docker container run -d \--name \[choose name\] -p \[choose
 > port\]:8080 \[imagename\]
@@ -43,10 +43,10 @@ Where ubuntu for windows resides -
 > \[switch to windows containers\] docker container run -d \--name web1
 > -p 80:80 microsoft/iis
 
--   exit container shell = ctrl + p + q
+- exit container shell = ctrl + p + q
 
--   execute commands = docker container exec -it \[name/id\] ls
-    /usr/share/nginx/html
+- execute commands = docker container exec -it \[name/id\] ls
+  /usr/share/nginx/html
 
 **[Dockerfile]{.underline}**
 
@@ -62,13 +62,13 @@ LABEL: Adds metadata to an image
 EXPOSE: Informs Docker that the container listens on the specified
 network ports at runtime
 
-ENV: Sets the environment variable \<key\> to the value \<value\>
+ENV: Sets the environment variable \<key\> to the value \<value\>
 
-ADD: Copies new files, directories or remote file URLs from \<src\> and
-adds them to the filesystem of the image at the path \<dest\>.
+ADD: Copies new files, directories or remote file URLs from \<src\> and
+adds them to the filesystem of the image at the path \<dest\>.
 
-COPY: Copies new files or directories from \<src\> and adds them to the
-filesystem of the container at the path \<dest\>.
+COPY: Copies new files or directories from \<src\> and adds them to the
+filesystem of the container at the path \<dest\>.
 
 ENTRYPOINT: Allows for configuring a container that will run as an
 executable
@@ -77,15 +77,15 @@ VOLUME: Creates a mount point with the specified name and marks it as
 holding externally mounted volumes from native host or other containers
 
 USER: Sets the user name (or UID) and optionally the user group (or GID)
-to use when running the image and for any RUN, CMD,
-and ENTRYPOINT instructions that follow it in the Dockerfile
+to use when running the image and for any RUN, CMD,
+and ENTRYPOINT instructions that follow it in the Dockerfile
 
-WORKDIR: Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY,
-and ADD instructions that follow it in the Dockerfile
+WORKDIR: Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY,
+and ADD instructions that follow it in the Dockerfile
 
 ARG: Defines a variable that users can pass at build-time to the builder
-with the docker build command, using the \--build-arg
-\<varname\>=\<value\> flag
+with the docker build command, using the \--build-arg
+\<varname\>=\<value\> flag
 
 ONBUILD: Adds a trigger instruction to the image that will be executed
 at a later time, when the image is used as the base for another build
@@ -149,7 +149,7 @@ EXPOSE 3000
 
 ENTRYPOINT \[\"./bin/www\"\]
 
-Git the weather-app code:
+Git the weather-app code:
 
 git clone https://github.com/linuxacademy/content-weather-app.git src
 
@@ -190,20 +190,20 @@ docker image push \<USERNAME\>/weather-app:latest
 
 **[DOCKER COMPOSE]{.underline}**
 
--   INSTALL
+- INSTALL
 
--   Download the latest version of Docker Compose:
+- Download the latest version of Docker Compose:
 
--   sudo curl -L
-    \"https://github.com/docker/compose/releases/download/1.23.2/docker-compose-\$(uname
-    -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose
+- sudo curl -L
+  \"https://github.com/docker/compose/releases/download/1.23.2/docker-compose-\$(uname
+  -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose
 
--   Apply executable permissions:
+- Apply executable permissions:
 
--   sudo chmod +x /usr/local/bin/docker-compose
+- sudo chmod +x /usr/local/bin/docker-compose
 
--   Test Docker Compose:
+- Test Docker Compose:
 
--   docker-compose \--version
+- docker-compose \--version
 
     -   
